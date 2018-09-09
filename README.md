@@ -1,33 +1,26 @@
-# News Feed
-
-
-## Build with:
-1. [Vue]()
-2. [moment.js]()
-3. [Font Awesome]()
+# News Feed App
 
 > A Vue.js project
+
+## A VueJS using [NewsAPI](https://newsapi.org/) API to fetch top headlines from various news sources.
+
+<img src="mockup.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+## Build with:
+1. [Vue](https://vuejs.org/)
+2. [moment.js](https://momentjs.com/)
+3. [Font Awesome](https://fontawesome.com/)
+4. [Axios](https://github.com/axios/axios)
+5. [Vuetify](https://vuetifyjs.com/en/)
+
 
 ## Build Setup
 
 ``` bash
 # install dependencies
 npm install
-
 # serve with hot reload at localhost:8080
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
