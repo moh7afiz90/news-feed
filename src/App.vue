@@ -7,8 +7,8 @@
       <v-content>
         <v-container fluid fill-height>
           <v-layout row wrap>
-            <SelectSource @source-changed="sourceChanged"/>
-            <NewsFeed :source="source" />
+            <SelectSource />
+            <NewsFeed />
           </v-layout>
         </v-container>
       </v-content>
@@ -21,20 +21,9 @@ import SelectSource from './components/SelectSource';
 import NewsFeed from './components/NewsFeed';
 
 export default {
-	name: 'app',
 	components: {
 		SelectSource,
 		NewsFeed
-	},
-	data() {
-		return {
-			source: ''
-		};
-	},
-	methods: {
-		sourceChanged(source) {
-			this.source = source;
-		}
 	}
 };
 </script>

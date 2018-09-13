@@ -7,11 +7,11 @@
           <v-btn slot="activator" large dark color="primary">FILTER</v-btn>
           <v-list>
             <v-list-tile 
-             v-for="s in sources" 
-              :key="s.id" 
-              @click="sourceChanged(s.id)"
-          >
-              <v-list-tile-title>{{ s.name }}</v-list-tile-title>
+              v-for="selectedSource in selectedSources" 
+              :key="selectedSource.id" 
+              @click="selectedSourceChanged(selectedSource)"
+   		      >
+              <v-list-tile-title>{{ selectedSource.name }}</v-list-tile-title>
             </v-list-tile>
           </v-list>
       </v-menu>
@@ -21,32 +21,23 @@
 </template>
 
 <script>
-import axios from 'axios';
-import {API_KEY} from '../global';
+import { mapGetters } from 'vuex'
+
 export default {
-	name: 'selectSource',
-
-	data() {
-		return {
-			sources: [],
-			source: ''
-		};
-	},
-
+  name: 'selectSource',
 	methods: {
-		sourceChanged(id) {
-			this.$emit('source-changed', id);
+		selectedSourceChanged(selectedSource , id){
+			this.$store.dispatch('getSelectedSources', selectedSource.id)
 		}
 	},
-
-	async mounted() {
-		await axios.get(`https://newsapi.org/v2/sources?language=en&apiKey=${API_KEY}`).then(response => {
-			let result = response.data.sources;
-			result = result.map(s => {
-				return Object.freeze(s);
-			});
-			this.sources = result;
-		});
+	computed: {
+		...mapGetters({
+			selectedSources: 'selectedSources',
+			selectedSource: 'selectedSource'
+		})
+	},
+	created: function(){
+		this.$store.dispatch('getNews')
 	}
 };
 </script>
